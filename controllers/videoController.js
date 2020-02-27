@@ -5,7 +5,7 @@ export const home = (req, res) =>
 
 export const search = (req, res) => {
     const { query: { term: searchingBy } } = req;  // === const searchingBy = req.query.term  // term === params
-    res.render("search", { pageTitle: "Search", searchingBy: searchingBy });
+    res.render("search", { pageTitle: "Search", searchingBy, videos });
 }
 
 export const upload = (req, res) =>
