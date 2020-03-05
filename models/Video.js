@@ -17,9 +17,15 @@ const VideoSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId, // comment의 ID를 가져와 저장.
+        ref: "Comment" // Comment.js를 참조하여서.
+    }]
 });
 
 const model = mongoose.model("Video", VideoSchema);
 
 export default model;
+
+//model은 schema의 인스턴스.
