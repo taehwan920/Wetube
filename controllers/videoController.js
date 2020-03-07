@@ -78,6 +78,8 @@ export const deleteVideo = async (req, res) => {
     } = req;
     try {
         await Video.findOneAndRemove({ _id: id });
-    } catch (error) { }
+    } catch (error) {
+        console.log(error);
+    }
     res.redirect(routes.home);
 }
