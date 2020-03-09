@@ -10,7 +10,7 @@ const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry: ENTRY_FILE,     // entry와 output을 지정.
+    entry: ["@babel/polyfill", ENTRY_FILE],     // entry와 output을 지정.
     mode: MODE,
     module: {               //***module 파트의 의미 :  // 이번엔 scss파일을 전부 찾고, 그걸 css로 바꾸고, 전체 텍스트 중 그 css의 텍스트를 추출하고, 추출된 css를 분리된 파일로 만드는 작업. -> 다른 파일 포맷을 위한 특정 변환 룰.
         rules: [                //*** 다음과 같은 rules를 따를것.
@@ -31,7 +31,7 @@ const config = {
                     {
                         loader: "postcss-loader",   //***얘는 우리가 주는 plugin을 받아서 CSS를 포맷(or브라우저)에 맞춰 변환해주어 호환성을 해결해줌.
                         options: {
-                            plugin() {
+                            plugins() {
                                 return [autoprefixer({ browsers: "cover 99.5%" })] // 리턴값 안에 있는건 현존하는 브라우저의 99.5%와 호환되게 해주는 옵션.
                             }
                         }
