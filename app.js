@@ -14,7 +14,7 @@ const app = express();
 app.use(helmet());
 app.set('view engine', "pug")
 app.use("/uploads", express.static("uploads")) // directory에서 file을 전달하는 새 미들웨어
-app.use("/static", express.static("static"))
+app.use("/static", express.static("static")) // 새로 추가한 static. static이란 파일은 없는데 왜 연결..
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
