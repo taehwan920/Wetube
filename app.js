@@ -5,9 +5,12 @@ import helmet from 'helmet';
 import { localsMiddleware } from "./middleware";
 import morganLogger, { format } from 'morgan';
 import globalRouter from './routers/globalRouter';
+import passport from "passport";
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import routes from './routes'
+
+import "./passport";
 
 const app = express();
 
@@ -19,6 +22,8 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morganLogger('dev'));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(localsMiddleware)
 
